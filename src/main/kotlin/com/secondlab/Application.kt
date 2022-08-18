@@ -2,6 +2,7 @@ package com.secondlab
 
 import io.ktor.application.*
 import com.secondlab.plugins.*
+import com.secondlab.repository.DatabaseFactory
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
@@ -11,4 +12,5 @@ fun Application.module() {
     configureSecurity()
     configureSerialization()
     configureRouting()
+    DatabaseFactory.init()
 }

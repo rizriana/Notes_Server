@@ -1,5 +1,6 @@
 package com.secondlab.plugins
 
+import com.secondlab.repository.DatabaseFactory
 import io.ktor.application.*
 import io.ktor.request.*
 import io.ktor.response.*
