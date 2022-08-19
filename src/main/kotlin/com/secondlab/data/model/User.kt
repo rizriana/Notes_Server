@@ -1,7 +1,9 @@
 package com.secondlab.data.model
 
+import io.ktor.auth.*
+
 data class User(
     val email: String,
-    val userName: String,
-    val hashPassword: String
-)
+    val hashPassword: String,
+    val userName: String
+) : Principal

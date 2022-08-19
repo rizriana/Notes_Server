@@ -1,8 +1,10 @@
 package com.secondlab
 
-import io.ktor.application.*
-import com.secondlab.plugins.*
+import com.secondlab.plugins.configureRouting
+import com.secondlab.plugins.configureSecurity
+import com.secondlab.plugins.configureSerialization
 import com.secondlab.repository.DatabaseFactory
+import io.ktor.application.*
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
