@@ -20,12 +20,12 @@ fun Application.configureRouting() {
     val hashFunction = { s: String -> hash(s) }
 
     routing {
+        userRoutes(db, jwtService, hashFunction)
+        noteRoutes(db, hashFunction)
+
         get("/") {
             call.respondText("Hello World!")
         }
-
-        userRoutes(db, jwtService, hashFunction)
-        noteRoutes(db, hashFunction)
 
         get("/token") {
             val email = call.request.queryParameters["email"]!!
