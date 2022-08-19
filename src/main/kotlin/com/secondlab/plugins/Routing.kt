@@ -6,6 +6,8 @@ import com.secondlab.data.model.User
 import com.secondlab.repository.Repository
 import com.secondlab.routes.userRoutes
 import io.ktor.application.*
+import io.ktor.auth.*
+import io.ktor.auth.jwt.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
@@ -39,6 +41,19 @@ fun Application.configureRouting() {
                     val body = call.receive<String>()
                     call.respond(body)
                 }
+            }
+        }
+    }
+
+    install(Authentication) {
+        jwt("jwt") {
+            verifier(jwtService.varifier)
+            realm = "Note Server"
+            validate {
+                val payload = it.payload
+                val email = payload.getClaim("email").asString()
+                val user = db.findUserByEmail(email)
+                user
             }
         }
     }
