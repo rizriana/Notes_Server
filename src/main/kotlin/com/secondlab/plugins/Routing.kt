@@ -4,6 +4,7 @@ import com.secondlab.authentication.JwtService
 import com.secondlab.authentication.hash
 import com.secondlab.data.model.User
 import com.secondlab.repository.Repository
+import com.secondlab.routes.noteRoutes
 import com.secondlab.routes.userRoutes
 import io.ktor.application.*
 import io.ktor.auth.*
@@ -24,6 +25,7 @@ fun Application.configureRouting() {
         }
 
         userRoutes(db, jwtService, hashFunction)
+        noteRoutes(db, hashFunction)
 
         get("/token") {
             val email = call.request.queryParameters["email"]!!
@@ -41,19 +43,6 @@ fun Application.configureRouting() {
                     val body = call.receive<String>()
                     call.respond(body)
                 }
-            }
-        }
-    }
-
-    install(Authentication) {
-        jwt("jwt") {
-            verifier(jwtService.varifier)
-            realm = "Note Server"
-            validate {
-                val payload = it.payload
-                val email = payload.getClaim("email").asString()
-                val user = db.findUserByEmail(email)
-                user
             }
         }
     }
