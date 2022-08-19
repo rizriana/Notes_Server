@@ -11,9 +11,9 @@ class Repository {
     suspend fun addUser(user: User) {
         dbQuery {
             UserTable.insert { ut ->
-                ut[UserTable.email] = user.email
-                ut[UserTable.hashPassword] = user.hashPassword
-                ut[UserTable.name] = user.userName
+                ut[email] = user.email
+                ut[hashPassword] = user.hashPassword
+                ut[name] = user.userName
             }
         }
     }
@@ -69,10 +69,10 @@ class Repository {
         }
     }
 
-    suspend fun deleteNote(id: String) {
+    suspend fun deleteNote(id: String, email: String) {
         dbQuery {
             NoteTable.deleteWhere {
-                NoteTable.id.eq(id)
+                NoteTable.userEmail.eq(email) and NoteTable.id.eq(id)
             }
         }
     }
