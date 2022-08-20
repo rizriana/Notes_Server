@@ -1,0 +1,1 @@
+web: build/install/com.secondlab.notes/bin/com.secondlab.notes
