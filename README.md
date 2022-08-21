@@ -2,10 +2,9 @@
 
 ## Authentication
 
-BASE_URL = https://notesdb-server.herokuapp.com
+Base URL = https://notesdb-server.herokuapp.com
 
-Request:
-- Authorization : Bearer Token
+- Authenticated Route : false
 
 ## Register User
 Request :
@@ -14,17 +13,17 @@ Request :
 - Body :
 ```json
 {
-    "name":"string",
-    "email":"string",
-    "password":"string"
+    "name":"John",
+    "email":"qwerty@gmail.com",
+    "password":"qwert"
 }
 ```
 
 Response :
 ```json
 {
-    "success": boolean,
-    "message": "string"
+    "success": "true",
+    "message": "{jwt token}"
 }
 ```
 
@@ -35,16 +34,16 @@ Request :
 - Body :
 ```json
 {
-    "email":"string",
-    "password":"string"
+    "email":"qwerty@gmail.com",
+    "password":"qwerty"
 }
 ```
 
 Response :
 ```json
 {
-    "success": boolean,
-    "message": "string"
+    "success": "true",
+    "message": "{jwt token}"
 }
 ```
 
@@ -56,11 +55,11 @@ Request :
 Response :
 ```json
 {
-        "id": "string",
-        "noteTitle": "string",
-        "description": "string",
-        "date": "date"
-    }
+    "id":"1",
+    "noteTitle":"First Note",
+    "description":"This is description",
+    "date":"121221"
+}
 ```
 
 ## Create Notes
@@ -70,18 +69,18 @@ Request :
 - Body :
 ```json
 {
-    "id":"string",
-    "noteTitle":"string",
-    "description":"string",
-    "date":"date"
+    "id":"1",
+    "noteTitle":"First Note",
+    "description":"This is description",
+    "date":"121221"
 }
 ```
 
 Response :
 ```json
 {
-    "success": boolean,
-    "message": "string"
+    "success": "true",
+    "message": "Note Added Successfully!"
 }
 ```
 
@@ -92,18 +91,18 @@ Request :
 - Body :
 ```json
 {
-    "id":"string",
-    "noteTitle":"string",
-    "description":"string",
-    "date":"date"
+    "id":"1",
+    "noteTitle":"First Note",
+    "description":"This is description",
+    "date":"121221"
 }
 ```
 
 Response :
 ```json
 {
-    "success": boolean,
-    "message": "string"
+    "success": "true",
+    "message": "Update Added Successfully!"
 }
 ```
 
@@ -115,7 +114,7 @@ Request :
 Response :
 ```json
 {
-    "success": boolean,
-    "message": "string"
+    "success": "true",
+    "message": "Delete Added Successfully!"
 }
 ```
