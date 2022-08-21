@@ -1,20 +1,26 @@
 # Notes Server Spec
 
-## Authentication
-
 Base URL = https://notesdb-server.herokuapp.com
 
-- Authenticated Route : false
+## Authentication
+
+All API must use this authentication
+
+Request:
+- Header :
+    - X-Api-Key : "your secret api key"
 
 ## Register User
 Request :
 - Method : POST
 - Endpoint : `/v1/users/register`
+- Header :
+    - Content-Type: application/json
 - Body :
 ```json
 {
-    "name":"John",
-    "email":"qwerty@gmail.com",
+    "name":"Ujang Burka",
+    "email":"jangburka@gmail.com",
     "password":"qwert"
 }
 ```
@@ -31,10 +37,12 @@ Response :
 Request :
 - Method : POST
 - Endpoint : `/v1/users/login`
+- Header :
+    - Content-Type: application/json
 - Body :
 ```json
 {
-    "email":"qwerty@gmail.com",
+    "email":"jangburka@gmail.com",
     "password":"qwerty"
 }
 ```
@@ -51,6 +59,9 @@ Response :
 Request :
 - Method : GET
 - Endpoint : `/v1/notes`
+- Header :
+    - Content-Type: application/json
+    - Authorization : Bearer Token
 
 Response :
 ```json
@@ -66,6 +77,9 @@ Response :
 Request :
 - Method : POST
 - Endpoint : `/v1/notes/create`
+- Header :
+    - Content-Type: application/json
+    - Authorization : Bearer Token
 - Body :
 ```json
 {
@@ -88,6 +102,9 @@ Response :
 Request :
 - Method : POST
 - Endpoint : `/v1/notes/update`
+- Header :
+    - Content-Type: application/json
+    - Authorization : Bearer Token
 - Body :
 ```json
 {
@@ -110,6 +127,11 @@ Response :
 Request :
 - Method : DELETE
 - Endpoint : `/v1/notes/delete?id={id}`
+- Header :
+    - Content-Type: application/json
+    - Authorization : Bearer Token
+    - Query Param :
+        - id : string
 
 Response :
 ```json
