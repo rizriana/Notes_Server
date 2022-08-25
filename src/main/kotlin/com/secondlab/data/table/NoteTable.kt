@@ -7,7 +7,7 @@ object NoteTable : Table() {
     val userEmail = varchar("userEmail", 512).references(UserTable.email)
     val noteTitle = text("noteTitle")
     val description = text("description")
-    val date = text("date")
+    val date = long("date")
 
     override val primaryKey: PrimaryKey = PrimaryKey(id)
 }
